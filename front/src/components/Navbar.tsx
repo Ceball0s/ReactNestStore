@@ -5,10 +5,10 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-3">
       <div className="container-fluid container-fluid">
         <div className="logo">
-          <img src="/images/tech-logo.png" alt="Logo" />
+          <i className="fas fa-store fa-2x"></i>
         </div>
         <NavLink className="navbar-brand fw-bold" to="/">
-          Phone Store
+          TechStore
         </NavLink>
         <button
           className="navbar-toggler"

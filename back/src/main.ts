@@ -10,6 +10,11 @@ async function bootstrap() {
     forbidNonWhitelisted: true,  // Lanza un error si hay campos no permitidos
     transform: true,  // Convierte los datos a los tipos esperados en el DTO
   }));
+  app.enableCors({
+    origin: 'http://localhost:5173', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

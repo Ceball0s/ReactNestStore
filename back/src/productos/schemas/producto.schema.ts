@@ -12,8 +12,8 @@ export class Producto extends Document {
   @Prop({ required: true })
   precio: number;
 
-  @Prop({ default: true })
-  disponible: boolean;
+  @Prop({ required: true })
+  stock: number;
 }
 
 export const ProductoSchema = SchemaFactory.createForClass(Producto);

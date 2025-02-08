@@ -1,6 +1,8 @@
 import { Controller, Get, Post, Body, Param, Put, Delete, NotFoundException } from '@nestjs/common';
 import { ProductosService } from './productos.service';
 import { Producto } from './schemas/producto.schema';
+import { CreateProductoDto } from './dto/create-producto.dto';
+import { UpdateProductoDto } from './dto/update-producto.dto';
 
 @Controller('productos')
 export class ProductosController {
@@ -21,13 +23,13 @@ export class ProductosController {
   }
 
   @Post()
-  async crear(@Body() producto: Producto): Promise<Producto> {
-    return this.productosService.crear(producto);
+  async crear(@Body() createProductoDto: CreateProductoDto): Promise<Producto> {
+    return this.productosService.crear(createProductoDto);
   }
 
   @Put(':id')
-  async editar(@Param('id') id: string, @Body() producto: Producto): Promise<Producto> {
-    const updatedProducto = await this.productosService.editar(id, producto);
+  async editar(@Param('id') id: string, @Body() updateProductoDto: UpdateProductoDto): Promise<Producto> {
+    const updatedProducto = await this.productosService.editar(id, updateProductoDto);
     if (!updatedProducto) {
       throw new NotFoundException(`Producto with ID ${id} not found`);
     }
@@ -36,6 +38,10 @@ export class ProductosController {
 
   @Delete(':id')
   async eliminar(@Param('id') id: string): Promise<any> {
-    return this.productosService.eliminar(id);
+    const result = await this.productosService.eliminar(id);
+    if (!result) {
+      throw new NotFoundException(`Producto with ID ${id} not found`);
+    }
+    return result;
   }
 }

@@ -6,7 +6,6 @@ export class CreateProductoDto {
   nombre: string;
 
   @IsString()
-  @IsNotEmpty()
   descripcion: string;
 
   @IsNumber()
