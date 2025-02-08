@@ -1,4 +1,6 @@
 import React from "react";
+import { Product } from "../types/product";
+import FloatingForm from "../components/FloatingForm";
 
 const About: React.FC = () => {
   return (
@@ -15,6 +17,9 @@ const About: React.FC = () => {
           <h3>Jhon David Ceballos</h3>
           <p>Jhon David es un experto en desarrollo de software con un enfoque en la experiencia del usuario. Su habilidad para diseñar interfaces intuitivas y atractivas garantiza que nuestros productos sean fáciles de usar y visualmente atractivos.</p>
         </div>
+      </div>
+      <div>
+        <FloatingForm onSubmit={ ()=> {} }/>
       </div>
     </section>
   );

@@ -1,0 +1,72 @@
+.floating-form-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgba(31, 41, 55, 0.75); /* bg-gray-800 bg-opacity-75 */
+  color: white;
+  z-index: 50;
+}
+
+.floating-form {
+  background-color: #374151; /* bg-gray-700 */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.floating-form .form-group {
+  margin-bottom: 1.5rem; /* space-y-6 */
+}
+
+.floating-form label {
+  display: block;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  color: #D1D5DB; /* text-gray-300 */
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.floating-form input,
+.floating-form textarea {
+  width: 100%;
+  padding: 0.75rem; /* px-3 py-2 */
+  border: 1px solid #4B5563; /* border-gray-600 */
+  background-color: #E5E7EB; /* bg-gray-200 */
+  color: black;
+  border-radius: 0.5rem; /* rounded-lg */
+}
+
+.floating-form .button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* space-x-4 */
+}
+
+.floating-form button {
+  width: 100%;
+  padding: 0.75rem; /* px-3 py-2 */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: background-color 0.3s; /* transition */
+}
+
+.floating-form button[type="submit"] {
+  background-color: #06B6D4; /* bg-cyan-500 */
+  color: black;
+}
+
+.floating-form button[type="submit"]:hover {
+  background-color: #0891B2; /* hover:bg-cyan-600 */
+}
+
+.floating-form button[type="button"] {
+  background-color: #EF4444; /* bg-red-500 */
+  color: black;
+}
+
+.floating-form button[type="button"]:hover {
+  background-color: #DC2626; /* hover:bg-red-600 */
+}

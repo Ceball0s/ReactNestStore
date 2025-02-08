@@ -3,9 +3,18 @@ import ProductCard from "../components/ProductCard";
 import { getProducts, deleteProduct } from "../services/api";
 import { Product } from '../types/product';
 import './Products.css';
+import FloatingForm from "../components/FloatingForm";
 
-const ProductList = () => {
+const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isFormVisible, setFormVisible] = useState(false);
+  let producto: Product = {
+    id: '1',
+    nombre: 'Producto de ejemplo',
+    description: 'Descripción del producto de ejemplo',
+    precio: 100,
+    stock: 10
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -21,7 +30,7 @@ const ProductList = () => {
   }, []);
 
   const addProduct = () => {
-    // Lógica para añadir un producto
+    setFormVisible(true);
   };
 
   const removeProduct = async (id: string) => {
@@ -43,11 +52,24 @@ const ProductList = () => {
           </div>
         ))}
       </ul>
-      <button 
-        onClick={addProduct} 
-        className="add-product-button">
-        Añadir Producto
-      </button>
+      <div className="button-container">
+        <button 
+          onClick={addProduct} 
+          className="add-product-button"
+        >
+          Añadir Producto
+        </button>
+        {isFormVisible && (
+          <FloatingForm 
+            producto={producto}
+            onSubmit={(data) => {
+              // Aquí puedes manejar el envío del formulario
+              setFormVisible(false);
+            }}
+            onClose={() => setFormVisible(false)}
+          />
+        )}
+      </div>
     </div>
   );
 };
