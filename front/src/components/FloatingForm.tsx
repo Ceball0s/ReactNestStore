@@ -2,21 +2,23 @@ import React, { useState, useEffect } from 'react';
 import './FloatingForm.css';
 import { Product } from '../types/product';
 interface FloatingFormProps {
-  onSubmit: (data: { name: string; description: string; price: number; quantity: number }) => void;
+  onSubmit: (data: Product) => void;
   onClose: () => void;
   producto: Product;
 }
 
 const FloatingForm: React.FC<FloatingFormProps> = ({ onSubmit, onClose, producto  }) => {
-  const [name, setName] = useState(producto?.nombre || '');
-  const [description, setDescription] = useState(producto?.description || '');
-  const [price, setPrice] = useState(producto?.precio || 0);
-  const [quantity, setQuantity] = useState(producto?.stock || 0);
+  const [nombre, setName] = useState(producto?.nombre || '');
+  const [descripcion, setDescription] = useState(producto?.descripcion || '');
+  const [precio, setPrice] = useState(producto?.precio || 0);
+  const [stock, setQuantity] = useState(producto?.stock || 0);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit({ name, description, price, quantity });
-    onClose(); // Cerrar el formulario después de enviar
+    const productData: Product = { nombre, descripcion, precio, stock ,
+      ...(producto.id && { id: producto.id })
+    };
+    onSubmit(productData);
+    onClose();
   };
 
   return (
@@ -26,7 +28,7 @@ const FloatingForm: React.FC<FloatingFormProps> = ({ onSubmit, onClose, producto
           <label>Nombre</label>
           <input
             type="text"
-            value={name}
+            value={nombre}
             onChange={(e) => setName(e.target.value)}
             required
           />
@@ -34,7 +36,7 @@ const FloatingForm: React.FC<FloatingFormProps> = ({ onSubmit, onClose, producto
         <div className="form-group">
           <label>Descripción</label>
           <textarea
-            value={description}
+            value={descripcion}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
@@ -43,7 +45,7 @@ const FloatingForm: React.FC<FloatingFormProps> = ({ onSubmit, onClose, producto
           <label>Precio</label>
           <input
             type="number"
-            value={price}
+            value={precio}
             onChange={(e) => setPrice(parseFloat(e.target.value))}
             required
           />
@@ -52,7 +54,7 @@ const FloatingForm: React.FC<FloatingFormProps> = ({ onSubmit, onClose, producto
           <label>Cantidad</label>
           <input
             type="number"
-            value={quantity}
+            value={stock}
             onChange={(e) => setQuantity(parseInt(e.target.value))}
             required
           />
