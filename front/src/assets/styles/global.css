@@ -1,0 +1,17 @@
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1E1E1E;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    color: #00B4D8;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }

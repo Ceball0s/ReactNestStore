@@ -4,6 +4,9 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-3">
       <div className="container-fluid container-fluid">
+        <div className="logo">
+          <img src="/images/tech-logo.png" alt="Logo" />
+        </div>
         <NavLink className="navbar-brand fw-bold" to="/">
           Phone Store
         </NavLink>
@@ -23,8 +26,8 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/servicios">
-                Servicios
+              <NavLink className="nav-link" to="/productos">
+              productos
               </NavLink>
             </li>
             <li className="nav-item">
